@@ -1,11 +1,29 @@
-.main-header {
-  height: 60px;
-  background-color: black;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  border-radius: 0 0 2px 2px;
-  box-shadow: 0 4px 10px rgb(63, 60, 60);
+@media only screen and (min-width: 768px) {
+  .main-header {
+    height: 60px;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 0 0 2px 2px;
+    box-shadow: 0 4px 10px rgb(63, 60, 60);
+  }
+}
+@media only screen and (max-width: 768px) {
+  .main-header {
+    height: 36px;
+    width: 100%;
+    overflow: hidden;
+    background-color: black;
+    color: white;
+    font-size: 8pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 0 0 2px 2px;
+    box-shadow: 0 4px 10px rgb(63, 60, 60);
+  }
 }

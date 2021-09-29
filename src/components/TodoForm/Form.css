@@ -1,28 +1,63 @@
-.todo-form {
-  display: flex;
-  background-color: aliceblue;
-  padding-top: 20px;
-  padding-bottom: 40px;
-  margin-top: 10px;
-  border-bottom: 3px solid dodgerblue;
-  align-items: center;
-  box-shadow: 0 4px 20px rgb(170, 211, 252);
-  justify-content: center;
+@media only screen and (min-width: 768px) {
+  .todo-form {
+    display: flex;
+    background-color: aliceblue;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    margin-top: 10px;
+    border-bottom: 3px solid dodgerblue;
+    align-items: center;
+    box-shadow: 0 4px 20px rgb(170, 211, 252);
+    justify-content: center;
+  }
+  #todo-submit {
+    color: white;
+    font-weight: bold;
+    font-size: 10pt;
+    margin-left: 50px;
+    height: 40px;
+    border-radius: 13px;
+    background-color: rgb(0, 124, 248);
+  }
+  #todo-submit:hover {
+    color: black;
+    border: 2px solid rgb(0, 124, 248);
+    background-color: rgba(207, 231, 247, 0.815);
+  }
+  #todobox {
+    width: 300px;
+  }
 }
-#todo-submit {
-  color: white;
-  font-weight: bold;
-  font-size: 10pt;
-  margin-left: 50px;
-  height: 40px;
-  border-radius: 13px;
-  background-color: rgb(0, 124, 248);
-}
-#todo-submit:hover {
-  color: black;
-  border: 2px solid rgb(0, 124, 248);
-  background-color: rgba(207, 231, 247, 0.815);
-}
-#todobox {
-  width: 300px;
+
+@media only screen and (max-width: 768px) {
+  .todo-form {
+    display: flex;
+    background-color: aliceblue;
+    padding-top: 20px;
+    width: 100%;
+    padding-bottom: 40px;
+    margin-top: 10px;
+    border-bottom: 3px solid dodgerblue;
+    align-items: center;
+    box-shadow: 0 4px 20px rgb(170, 211, 252);
+    justify-content: center;
+  }
+  #todo-submit {
+    color: white;
+    font-weight: bold;
+    font-size: 6pt;
+    width: fit-content;
+    margin-left: 20px;
+    height: 30px;
+    border-radius: 13px;
+    background-color: rgb(0, 124, 248);
+  }
+  #todo-submit:hover {
+    color: black;
+    border: 2px solid rgb(0, 124, 248);
+    background-color: rgba(207, 231, 247, 0.815);
+  }
+  #todobox {
+    width: 200px;
+  }
 }
