@@ -16,13 +16,13 @@ const List = (props) => {
   console.log("updating..." + props.todos[0].text);
   const alertRef = useRef();
   const [showDialog, setShowDialog] = useState(false);
-  const [todo, setTodo] = useState([]);
+  const [todo, setTodo] = useState(props.todos || []);
   const focusText = useRef(null);
 
   useEffect(() => {
     console.log("inisde use Effect");
     setTodo([...props.todos]);
-  }, []);
+  }, [props.todos]);
 
   const handleCompleted = (value, index) => {
     let update = todo[index];
@@ -30,15 +30,19 @@ const List = (props) => {
     console.log(update);
     var newArray = [...todo];
     newArray[index] = update;
+    props.onTodoChange(newArray);
     console.log(newArray);
-    setTodo(() => [...newArray]);
+    //setTodo(() => [...newArray]);
     localStorage.setItem("Todo-obj", JSON.stringify(newArray));
   };
   const handleDeleted = (value, index) => {
     var currentArray = [...todo];
-    var newArray = currentArray.splice(index, 1);
+    var newArray = currentArray.filter((item) => {
+      return value.id !== item.id;
+    });
+    props.onTodoChange(newArray);
     console.log(newArray);
-    setTodo(() => [...newArray]);
+    //setTodo(() => [...newArray]);
     localStorage.setItem("Todo-obj", JSON.stringify(newArray));
   };
   const handleEdit = (value, index) => {

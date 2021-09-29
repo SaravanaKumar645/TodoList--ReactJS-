@@ -20,9 +20,12 @@ function Form() {
       console.log(myList.length);
     }
   }, []);
+  const onTodoChange = (arr) => {
+    setList(() => [...arr]);
+  };
   const updateList = useMemo(() => {
     if (list.length > 0) {
-      return <List todos={list} />;
+      return <List todos={list} onTodoChange={onTodoChange} />;
     } else {
       return (
         <h1>
