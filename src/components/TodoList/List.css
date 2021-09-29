@@ -67,7 +67,7 @@ h2 {
 .value-completed p {
   max-width: 260px;
   min-height: 40px;
-  opacity: 40%;
+  opacity: 70%;
 }
 .value p {
   max-width: 260px;
@@ -126,7 +126,7 @@ h2 {
   background-color: rgb(239, 215, 250);
 }
 #edit-btn:disabled {
-  opacity: 30%;
+  opacity: 80%;
 }
 .completed-icon {
   font-size: 35px;
