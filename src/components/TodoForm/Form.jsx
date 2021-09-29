@@ -24,7 +24,11 @@ function Form() {
     if (list.length > 0) {
       return <List todos={list} />;
     } else {
-      return <h1>No , Todos !</h1>;
+      return (
+        <h1>
+          <center> No , Todos !</center>
+        </h1>
+      );
     }
   }, [list]);
   const handleSubmit = (e) => {

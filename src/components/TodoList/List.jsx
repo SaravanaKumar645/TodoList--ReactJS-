@@ -16,13 +16,13 @@ const List = (props) => {
   console.log("updating..." + props.todos[0].text);
   const alertRef = useRef();
   const [showDialog, setShowDialog] = useState(false);
-  const [todo, setTodo] = useState(props.todos || []);
+  const [todo, setTodo] = useState([]);
   const focusText = useRef(null);
 
   useEffect(() => {
     console.log("inisde use Effect");
     setTodo([...props.todos]);
-  }, [props.todos]);
+  }, []);
 
   const handleCompleted = (value, index) => {
     let update = todo[index];
