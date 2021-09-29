@@ -35,8 +35,8 @@ const List = (props) => {
     localStorage.setItem("Todo-obj", JSON.stringify(newArray));
   };
   const handleDeleted = (value, index) => {
-    var newArray = [...todo];
-    newArray.splice(index, 1);
+    var currentArray = [...todo];
+    var newArray = currentArray.splice(index, 1);
     console.log(newArray);
     setTodo(() => [...newArray]);
     localStorage.setItem("Todo-obj", JSON.stringify(newArray));
