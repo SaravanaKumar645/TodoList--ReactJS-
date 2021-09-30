@@ -23,7 +23,7 @@ function PaperComponent(props) {
   return (
     <Draggable
       handle="#draggable-content"
-      // cancel={'[class*="MuiDialogContent-root"]'}
+      cancel={'[class*="MuiDialogAction-root"]'}
     >
       <Paper {...props} />
     </Draggable>
@@ -108,7 +108,6 @@ export default function FormDialog(props) {
           </p>
         </DialogContent>
         <DialogActions
-          id="draggable-content"
           style={{
             marginRight: "10px",
             marginBottom: "20px",
