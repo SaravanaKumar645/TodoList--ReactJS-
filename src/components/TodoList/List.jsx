@@ -1,21 +1,15 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as Ioicons from "react-icons/io";
 import * as Mdicons from "react-icons/md";
 import { BiCalendarEdit } from "react-icons/bi";
 import "./List.css";
+import FormDialog from "./Dialog";
 import { AiOutlineFileDone } from "react-icons/ai";
-import { IconButton, TextField, Button } from "@material-ui/core";
-import {
-  AlertDialog,
-  AlertDialogLabel,
-  AlertDialogDescription,
-  AlertDialogOverlay,
-} from "@reach/alert-dialog";
+import { IconButton } from "@material-ui/core";
+import { render } from "@testing-library/react";
 
 const List = (props) => {
   console.log("updating..." + props.todos[0].text);
-  const alertRef = useRef();
-  const [showDialog, setShowDialog] = useState(false);
   const [todo, setTodo] = useState(props.todos || []);
   const focusText = useRef(null);
 
@@ -32,7 +26,6 @@ const List = (props) => {
     newArray[index] = update;
     props.onTodoChange(newArray);
     console.log(newArray);
-    //setTodo(() => [...newArray]);
     localStorage.setItem("Todo-obj", JSON.stringify(newArray));
   };
   const handleDeleted = (value, index) => {
@@ -42,39 +35,27 @@ const List = (props) => {
     });
     props.onTodoChange(newArray);
     console.log(newArray);
-    //setTodo(() => [...newArray]);
     localStorage.setItem("Todo-obj", JSON.stringify(newArray));
   };
-  const handleEdit = (value, index) => {
-    //setShowDialog(true);
-  };
 
+  const toggleDialog = (value, todo, index, currentValue) => {
+    if (value) {
+      render(
+        <FormDialog
+          currentTodo={todo}
+          currentIndex={index}
+          currentValue={currentValue}
+          onUpdate={handleEdit}
+        />
+      );
+    }
+  };
+  const handleEdit = (arr) => {
+    props.onTodoChange(arr);
+  };
   return (
     <div className="list">
       {console.log("state updating...")}
-      {showDialog && (
-        <AlertDialog className="alert-dialog" leastDestructiveRef={alertRef}>
-          <AlertDialogLabel>Update your Task</AlertDialogLabel>
-          <TextField
-            id="alert-input"
-            size="small"
-            type="text"
-            variant="outlined"
-            multiline={true}
-            label="Enter your task "
-            required={true}
-          ></TextField>
-          <Button
-            id="alert-btn"
-            size="small"
-            variant="outlined"
-            ref={alertRef}
-            onClick={() => {
-              setShowDialog(false);
-            }}
-          ></Button>
-        </AlertDialog>
-      )}
       <h2>My Todo</h2>
       <ul>
         {todo.map((value, index) => {
@@ -96,7 +77,7 @@ const List = (props) => {
                   id="complete-btn"
                   centerRipple={true}
                   title="Toggle completed status"
-                  onClick={(e) => {
+                  onClick={() => {
                     handleCompleted(value, index);
                   }}
                 >
@@ -106,7 +87,7 @@ const List = (props) => {
                   id="remove-btn"
                   centerRipple={true}
                   title="Delete Task"
-                  onClick={(e) => {
+                  onClick={() => {
                     handleDeleted(value, index);
                   }}
                 >
@@ -117,8 +98,8 @@ const List = (props) => {
                   disabled={value.completed}
                   centerRipple={true}
                   title="Edit task"
-                  onClick={(e) => {
-                    handleEdit(value, index);
+                  onClick={() => {
+                    toggleDialog(true, todo, index, value);
                   }}
                 >
                   <BiCalendarEdit />
