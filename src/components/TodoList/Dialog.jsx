@@ -37,10 +37,11 @@ const inputStyle = {
 export default function FormDialog(props) {
   const alertInputRef = React.useRef();
   const fullScreen = useMediaQuery(useTheme().breakpoints.down("md"));
-  const [updatedTodo, setUpdate] = React.useState("");
+  const [updatedTodo, setUpdate] = React.useState(
+    props.currentValue.text || ""
+  );
   const [show, setShow] = React.useState(true);
   const [error, setError] = useState(false);
-
   const handleClose = () => {
     setShow(false);
   };
@@ -90,6 +91,13 @@ export default function FormDialog(props) {
             Enter the updated task in the text field below .
           </DialogContentText>
           <TextField
+            autoFocus={true}
+            onFocus={(e) => {
+              e.currentTarget.setSelectionRange(
+                e.currentTarget.value.length,
+                e.currentTarget.value.length
+              );
+            }}
             style={inputStyle}
             id="alert-input"
             value={updatedTodo}
