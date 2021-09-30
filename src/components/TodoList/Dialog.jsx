@@ -88,7 +88,6 @@ export default function FormDialog(props) {
             Enter the updated task in the text field below .
           </DialogContentText>
           <TextField
-            autoFocus
             style={inputStyle}
             id="alert-input"
             value={updatedTodo}
