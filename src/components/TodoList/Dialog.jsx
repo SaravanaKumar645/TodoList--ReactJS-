@@ -22,17 +22,17 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 function PaperComponent(props) {
   return (
     <Draggable
-      handle="#draggable-content"
-      cancel={'[class*="MuiDialogAction-root"]'}
+      handle="#draggable-dialog-title"
+      cancel={'[class*="MuiDialogContent-root"]'}
     >
       <Paper {...props} />
     </Draggable>
   );
 }
 const inputStyle = {
-  marginTop: "50px",
+  marginTop: "30px",
   width: "330px",
-  marginBottom: "50px",
+  marginBottom: "40px",
 };
 export default function FormDialog(props) {
   const alertInputRef = React.useRef();
@@ -63,13 +63,14 @@ export default function FormDialog(props) {
   return (
     <div>
       <Dialog
+        style={{ borderRadius: "33px" }}
         fullScreen={fullScreen}
         TransitionComponent={Transition}
         open={show}
         id="dialog"
         closeAfterTransition={true}
         onClose={handleClose}
-        aria-labelledby="draggable-content"
+        aria-labelledby="draggable-dialog-title"
         PaperComponent={PaperComponent}
       >
         <DialogTitle
@@ -78,12 +79,13 @@ export default function FormDialog(props) {
             color: "dodgerblue",
             fontWeight: "bold",
             fontSize: "18pt",
+            height: "90px",
           }}
           id="draggable-dialog-title"
         >
           Update Task
         </DialogTitle>
-        <DialogContent id="draggable-content">
+        <DialogContent>
           <DialogContentText>
             Enter the updated task in the text field below .
           </DialogContentText>
@@ -102,8 +104,7 @@ export default function FormDialog(props) {
             variant="outlined"
           />
           <p>
-            Note: This dialog can be draggable. Click anywhere to drag the
-            dialog
+            Note: This dialog can be draggable. Click on top to drag the dialog
           </p>
         </DialogContent>
         <DialogActions
