@@ -22,8 +22,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 function PaperComponent(props) {
   return (
     <Draggable
-      handle="#draggable-dialog-title"
-      cancel={'[class*="MuiDialogContent-root"]'}
+      handle="#draggable-content"
+      // cancel={'[class*="MuiDialogContent-root"]'}
     >
       <Paper {...props} />
     </Draggable>
@@ -69,7 +69,7 @@ export default function FormDialog(props) {
         id="dialog"
         closeAfterTransition={true}
         onClose={handleClose}
-        aria-labelledby="draggable-dialog-title"
+        aria-labelledby="draggable-content"
         PaperComponent={PaperComponent}
       >
         <DialogTitle
@@ -83,7 +83,7 @@ export default function FormDialog(props) {
         >
           Update Task
         </DialogTitle>
-        <DialogContent>
+        <DialogContent id="draggable-content">
           <DialogContentText>
             Enter the updated task in the text field below .
           </DialogContentText>
@@ -103,10 +103,12 @@ export default function FormDialog(props) {
             variant="outlined"
           />
           <p>
-            Note: This dialog can be draggable. Click on top to drag the dialog
+            Note: This dialog can be draggable. Click anywhere to drag the
+            dialog
           </p>
         </DialogContent>
         <DialogActions
+          id="draggable-content"
           style={{
             marginRight: "10px",
             marginBottom: "20px",
